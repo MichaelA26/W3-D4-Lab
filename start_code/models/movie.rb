@@ -5,19 +5,20 @@ require_relative('./casting.rb')
 class Movie
 
   attr_reader :id
-  attr_accessor :title, :genre
+  attr_accessor :title, :genre, :budget
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
     @genre = options['genre']
+    @budget = options['budget'].to_i
   end
 
   def save
     sql = "INSERT INTO movies
-    (title, genre) VALUES ($1, $2)
+    (title, genre, budget) VALUES ($1, $2, $3)
     RETURNING id"
-    values = [@title, @genre]
+    values = [@title, @genre, @budget]
     movie = SqlRunner.run(sql, values).first
     @id = movie["id"].to_i
   end
@@ -38,5 +39,13 @@ class Movie
     star = result.map { |star| Star.new(star) }
     return star
   end
+
+  # def budget(fee, budget)
+  #   # sql = "SELECT movies.* FROM movies
+  #   #       INNER JOIN castings.fee = movies.id
+  #   #       WHERE movie_id = $1"
+  #     movie_budget = @budget -= casting.fee
+  #     return movie_budget
+  # end
 
 end

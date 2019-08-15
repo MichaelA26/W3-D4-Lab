@@ -5,11 +5,11 @@ require_relative('./models/movie')
 require_relative('./models/star')
 require ('pry')
 
-movie1 = Movie.new( { 'title' => 'Blade Runner', 'genre' => 'Sci-fi' } )
+movie1 = Movie.new( { 'title' => 'Blade Runner', 'genre' => 'Sci-fi', 'budget' => 1000000 } )
 movie1.save
-movie2 = Movie.new( { 'title' => 'Gone With The Wind', 'genre' => 'Classic' } )
+movie2 = Movie.new( { 'title' => 'Gone With The Wind', 'genre' => 'Classic', 'budget' => 1000000 } )
 movie2.save
-movie3 = Movie.new( { 'title' => 'Fight Club', 'genre' => 'Thriller' } )
+movie3 = Movie.new( { 'title' => 'Fight Club', 'genre' => 'Thriller', 'budget' => 1000000 } )
 movie3.save
 
 star1 = Star.new( { 'first_name' => 'Harrison', 'last_name' => 'Ford' } )
